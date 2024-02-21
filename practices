@@ -1,0 +1,176 @@
+😉Practice1:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Function</title>
+</head>
+<body>
+
+<script>
+    // JavaScript code
+    function callback(number) {
+        var square = number * number;
+        console.log("The square of " + number + " is: " + square);
+    }
+
+    // Example usage:
+    callback(5);
+</script>
+
+</body>
+</html>
+
+😉Practice3:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Function</title>
+</head>
+<body>
+
+<script>
+    // JavaScript code
+    function processInput(input) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (typeof input === 'string') {
+                    resolve(input.split('').reverse().join(''));
+                } else {
+                    reject("Wrong Input: " + input);
+                }
+            }, 500);
+        });
+    }
+
+    // Example usage:
+    processInput("Hello")
+        .then(result => {
+            console.log("Resolved:", result);
+        })
+        .catch(error => {
+            console.error("Rejected:", error);
+        });
+    
+    processInput(123)
+        .then(result => {
+            console.log("Resolved:", result);
+        })
+        .catch(error => {
+            console.error("Rejected:", error);
+        });
+</script>
+
+</body>
+</html>
+
+😉Practice5:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Operations with var and let</title>
+</head>
+<body>
+
+<script>
+    // JavaScript code
+
+    // Using var (function-scoped)
+    function exampleWithVar() {
+        var asyncResults = [];
+
+        for (var i = 0; i < 3; i++) {
+            setTimeout(function () {
+                asyncResults.push(i);  // The value of i is shared among all iterations
+                console.log("Var - Iteration:", i);
+            }, 1000 * i);
+        }
+
+        setTimeout(function () {
+            console.log("Var - Final Result:", asyncResults);
+        }, 3000);
+    }
+
+    // Using let (block-scoped)
+    function exampleWithLet() {
+        var asyncResults = [];
+
+        for (let i = 0; i < 3; i++) {
+            setTimeout(function () {
+                asyncResults.push(i);  // The value of i is block-scoped, unique for each iteration
+                console.log("Let - Iteration:", i);
+            }, 1000 * i);
+        }
+
+        setTimeout(function () {
+            console.log("Let - Final Result:", asyncResults);
+        }, 3000);
+    }
+
+    // Run examples
+    exampleWithVar();
+    exampleWithLet();
+</script>
+
+</body>
+</html>
+
+😉Practice6:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+
+<div id="profile-container">
+    <h1>User Profile</h1>
+    <p id="user-name">Name: Loading...</p>
+    <p id="user-email">Email: Loading...</p>
+    <!-- Add more profile information elements as needed -->
+</div>
+
+<script>
+    // JavaScript code
+
+    // Function to fetch user data from an API
+    function fetchUserData() {
+        // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint to fetch user data
+        fetch('YOUR_API_ENDPOINT')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(userData => {
+                // Update the profile page with the retrieved information
+                document.getElementById('user-name').textContent = 'Name: ' + userData.name;
+                document.getElementById('user-email').textContent = 'Email: ' + userData.email;
+                // Update other profile information elements as needed
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }
+
+    // Call the function to fetch and update user data
+    fetchUserData();
+</script>
+
+</body>
+</html>
+In this example:
+
+The HTML structure includes a container with elements to display user information (e.g., name and email).
+The JavaScript code uses the fetch API to make an asynchronous request to the specified API endpoint.
+Once the data is retrieved successfully, the profile page is updated with the user information.
+Any errors during the fetch process are caught and logged to the console.
+Please replace 'YOUR_API_ENDPOINT' with the actual API endpoint you are using to fetch user data. Additionally, update the JavaScript code to handle and display other user information as needed.
